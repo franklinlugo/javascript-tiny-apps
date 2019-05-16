@@ -1,0 +1,196 @@
+/* helpers */
+.is-hidden {
+  display: none;
+}
+
+/* general resets */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, sans-serif;
+  font-weight: normal;
+  color: black;
+}
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+}
+
+textarea {
+  height: auto;
+  min-height: 50px;
+  border-radius: 0;
+}
+
+select {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 0;
+}
+
+.map_canvas img,
+.map_canvas embed,
+.map_canvas object,
+.mqa-display img,
+.mqa-display embed,
+.mqa-display object {
+  max-width: none !important;
+}
+
+button {
+  padding: 0;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1;
+  cursor: pointer;
+}
+
+pre {
+  overflow: auto;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+}
+
+/* body */
+body {
+  width: 100vw;
+  height: 100vh;
+  background: url(img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* add list form */
+.wrapper-form {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.create-list-form {
+  display: -webkit-box;
+  display: flex;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  border-color: transparent;
+  transition: all 0.1s ease-in-out;
+  width: 50%;
+}
+
+.create-list-form .wrapper-label-input {
+  display: flex;
+  flex-grow: 1;
+}
+
+.create-list-form .wrapper-label-input .label {
+  flex-shrink: 0;
+}
+.create-list-form .wrapper-label-input .label .sgv-search-icon {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 14px;
+  box-sizing: content-box;
+  align-self: center;
+  width: 20px;
+  height: 20px;
+  fill: #999;
+}
+
+.create-list-form .wrapper-label-input .create-list-input {
+  flex-grow: 1;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 14px;
+  color: #111;
+}
+
+.create-list-form .wrapper-button {
+  padding: 4px;
+  flex-shrink: 0;
+}
+.create-list-form .wrapper-button .create-button {
+  display: flex;
+  align-items: center;
+  color: #999;
+  fill: currentColor;
+  background-color: #fff;
+  border-color: #ddd;
+  height: 44px;
+  padding: 0 19px;
+  font-size: 15px;
+  line-height: 41px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  user-select: none;
+}
+
+/* todo list container */
+.todo-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.todo-list-container [class$='-container'] {
+  flex: 0 0 25%;
+}
+.todo-list-container [class$='-container'] > [class$='-title'] {
+  text-transform: capitalize;
+  color: white;
+  font-weight: bold;
+}
+
+.todo-list-container [class$='-container'] > [class$='-list'] {
+  list-style-type: none;
+  padding-left: 1rem;
+}
+.todo-list-container [class$='-container'] > [class$='-list'] > .task {
+  margin-bottom: 1rem;
+}
+.todo-list-container [class$='-container'] > [class$='-list'] > .task.complete {
+  text-decoration: line-through;
+}
+
+.todo-list-container [class$='-container'] > [class$='-list'] > .task > span {
+  color: #fff;
+}
+.todo-list-container [class$='-container'] > [class$='-list'] > .task > button > .sgv-trash-icon {
+  width: 18px;
+  height: 18px;
+  fill: #999;
+}
+
+.todo-list-container [class$='-container'] > [class$='-list'] > .task > button svg,
+.todo-list-container [class$='-container'] > [class$='-list'] > .task > button svg path {
+  pointer-events: none;
+}
