@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="public/main.css">
+  <title>Javascript Calculator</title>
+</head>
+
+<body>
+  <div class="main">
+    <div class="inner">
+      <!-- display -->
+      <div class="display">
+        <!-- display -> top -->
+        <div class="top" id="operation"></div>
+        <!-- display -> bottom -->
+        <div class="bottom" id="result"></div>
+        <!-- display -> history -->
+        <div class="history" id="history">
+          <h5 class="title">historial</h5>
+          <button class="button" id="toggle-history">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon" height="48" viewBox="0 0 48 48" width="48">
+              <path d="M0 0h48v48h-48z" fill="none"></path>
+              <path d="M25.99 6c-9.95 0-17.99 8.06-17.99 18h-6l7.79 7.79.14.29 8.07-8.08h-6c0-7.73 6.27-14 14-14s14 6.27 14 14-6.27 14-14 14c-3.87 0-7.36-1.58-9.89-4.11l-2.83 2.83c3.25 3.26 7.74 5.28 12.71 5.28 9.95 0 18.01-8.06 18.01-18s-8.06-18-18.01-18zm-1.99 10v10l8.56 5.08 1.44-2.43-7-4.15v-8.5h-3z"
+                opacity=".9"></path>
+            </svg>
+          </button>
+          <ul class="operation-list" id="operation-list">
+            <!-- <li class="operation">
+              <span class="op"></span>
+              <span class="result"></span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- row-container -->
+      <div class="row-container" id="buttons">
+        <!-- row -->
+        <div class="row">
+          <div class="wrapper-button wide"><button class="button" data-button="ac">AC</button></div>
+          <div class="wrapper-button"><button class="button" data-button="%">%</button></div>
+          <div class="wrapper-button"><button class="button green" data-button="/">÷</button></div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="wrapper-button"><button class="button" data-button="7">7</button></div>
+          <div class="wrapper-button"><button class="button" data-button="8">8</button></div>
+          <div class="wrapper-button"><button class="button" data-button="9">9</button></div>
+          <div class="wrapper-button"><button class="button green" data-button="*">×</button></div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="wrapper-button"><button class="button" data-button="4">4</button></div>
+          <div class="wrapper-button"><button class="button" data-button="5">5</button></div>
+          <div class="wrapper-button"><button class="button" data-button="6">6</button></div>
+          <div class="wrapper-button"><button class="button green" data-button="-">-</button></div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="wrapper-button"><button class="button" data-button="1">1</button></div>
+          <div class="wrapper-button"><button class="button" data-button="2">2</button></div>
+          <div class="wrapper-button"><button class="button" data-button="3">3</button></div>
+          <div class="wrapper-button"><button class="button green" data-button="+">+</button></div>
+        </div>
+        <!-- row -->
+        <div class="row">
+          <div class="wrapper-button wide"><button class="button" data-button="0">0</button></div>
+          <div class="wrapper-button"><button class="button" data-button=".">.</button></div>
+          <div class="wrapper-button"><button class="button equal" data-button="=">=</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="public/app.js"></script>
+</body>
+
+</html>

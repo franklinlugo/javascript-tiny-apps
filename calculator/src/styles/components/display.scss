@@ -1,0 +1,74 @@
+.main .display {
+  position: relative;
+  > .top,
+  > .bottom {
+    display: block;
+    height: 6rem;
+    text-align: right;
+    padding: 0 2rem 0 0;
+    font-size: 2rem;
+    line-height: 6rem;
+    color: $lightgray;
+    @include breakpoint(medium) {
+      font-size: 4rem;
+    }
+  }
+  > .history {
+    &.is-visible {
+      left: 0;
+    }
+    position: absolute;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    border: 1px solid $gray;
+    border-top: none;
+    height: 100vh;
+    background: #fff;
+    transition: all 0.3s ease 0s;
+    @include breakpoint(medium) {
+      left: -300px;
+      width: 300px;
+    }
+    > .title {
+      display: block;
+      margin: 0;
+      padding: 0.5rem 0;
+      text-transform: uppercase;
+      background-color: $green;
+      color: #fff;
+      text-align: center;
+    }
+    > .button {
+      position: absolute;
+      top: 2.2rem;
+      right: -3.8rem;
+      width: 60px;
+      height: 50px;
+      background-color: $green;
+      border-radius: 0 15px 15px 0;
+      > .icon {
+        fill: #fff;
+      }
+    }
+    > .operation-list {
+      > .operation {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 0 0 1rem 0;
+        font-size: 2rem;
+        line-height: 1;
+        @include breakpoint(medium) {
+          font-size: 3rem;
+        }
+        > .op {
+          color: $lightgray;
+        }
+        > .result {
+          color: $gray;
+        }
+      }
+    }
+  }
+}
