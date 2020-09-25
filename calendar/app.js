@@ -1,50 +1,35 @@
 const app = document.getElementById('app');
-const monthsList = [
-  'Enero',
-  'Febrero',
-  'Marzo',
-  'Abril',
-  'Mayo',
-  'Junio',
-  'Julio',
-  'Agosto',
-  'Septiembre',
-  'Octubre',
-  'Noviembre',
-  'Diciembre',
-];
-
-const daysList = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
+const months = [ 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ];
+const days = ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'];
 
 function getDate(year, month) {
-  const dateObj = new Date(year, month);
+  const date = new Date(year, month);
   const daysInMonthObj = new Date(year, month + 1, 0);
-  const startDay = dateObj.getDay();
+  const firstDayInMonth = date.getDay();
   const daysInMonth = daysInMonthObj.getDate();
-  return { dateObj, startDay, daysInMonth };
+  return { firstDayInMonth, daysInMonth };
 }
-//
 
 function createMonth(year, monthNumber) {
   // create month container
-  const month = document.createElement('div');
-  month.className = 'month';
+  const monthContainer = document.createElement('div');
+  monthContainer.className = 'month';
 
   // create inner month table
   const monthTable = document.createElement('table');
-  monthTable.className = 'monthTable';
+  monthTable.className = 'month__table';
 
   // create month caption
   const caption = document.createElement('caption');
-  caption.className = 'monthTable__caption';
-  caption.textContent = monthsList[monthNumber];
+  caption.className = 'month__table__caption';
+  caption.textContent = months[monthNumber];
   monthTable.appendChild(caption);
 
   // create month days of week
   const daysOfWeek = document.createElement('thead');
-  daysOfWeek.className = 'monthTable__daysOfWeek';
+  daysOfWeek.className = 'month__table__daysOfWeek';
   const daysOfWeekRow = document.createElement('tr');
-  daysList.forEach(day => {
+  days.forEach(day => {
     const dayCell = document.createElement('td');
     dayCell.textContent = day;
     daysOfWeekRow.appendChild(dayCell);
@@ -54,37 +39,37 @@ function createMonth(year, monthNumber) {
 
   // create days
   const daysOfMonth = document.createElement('tbody');
-  daysOfMonth.className = 'monthTable__daysOfMonth';
+  daysOfMonth.className = 'month__table__daysOfMonth';
 
-  const { startDay, daysInMonth } = getDate(year, monthNumber);
-  let firstRow = true;
-  let numberOfDate = 1;
-  let value = '';
-  for (f = 0; f < 6; f++) {
-    let daysOfMonthCol = document.createElement('tr');
-    daysOfMonth.appendChild(daysOfMonthCol);
-    for (d = 0; d < 7; d++) {
-      const daysOfMonthRow = document.createElement('td');
-      if (startDay === d && firstRow) {
-        value = numberOfDate;
-        firstRow = false;
-      } else if (!firstRow) {
-        value = numberOfDate;
-        if (numberOfDate > daysInMonth) {
-          value = '';
-        }
+  const { firstDayInMonth, daysInMonth } = getDate(year, monthNumber);
+  const numberOfWeeks = [...Array(Math.ceil(daysInMonth / 7)).keys()].map(_ => _ + 1);
+
+  let date = 1
+  numberOfWeeks.forEach((week) => {
+    let row = document.createElement('tr');
+    let value;
+    [...Array(7).keys()].forEach((dayOfWeek) => {
+      let data = document.createElement('td');
+      if (dayOfWeek < firstDayInMonth && week === 1 || date > daysInMonth) {
+        value = '';
+      } else {
+        value = date;
+        date++;
       }
-      daysOfMonthRow.innerText = value;
-      daysOfMonthCol.appendChild(daysOfMonthRow);
-      if (!firstRow) numberOfDate++;
-    }
-  }
+      data.innerText = value;
+      row.appendChild(data)
+    })
+
+    daysOfMonth.appendChild(row);
+  })
+
   monthTable.appendChild(daysOfMonth);
 
   // add table to month
-  month.appendChild(monthTable);
+  monthContainer.appendChild(monthTable);
+
   // add month
-  app.appendChild(month);
+  app.appendChild(monthContainer);
 }
 
-monthsList.forEach((month, index) => createMonth(2019, index));
+months.forEach((_, index) => createMonth(2020, index));
